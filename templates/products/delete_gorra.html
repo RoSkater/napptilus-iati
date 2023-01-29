@@ -1,0 +1,15 @@
+<h1>GORRA DELETE</h1>
+
+{% block content %}
+
+<p>¿Seguro que quiere eliminar esta gorra "{{item.description}} {{item.marca}}"?</p>
+
+<form action="http://127.0.0.1:8000/products/delete/gorra/{{ item.id }}" method="POST">
+    {% csrf_token %}
+
+<input type="submit" value="Eliminar" name="Confirmar">
+</form>
+
+<a href="{% url 'products' %}"><button>Cancelar</button></a>
+
+{% endblock %}

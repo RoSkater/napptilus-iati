@@ -1,0 +1,85 @@
+<td><a id="product_list" href="/products">  Lista productos  </a>|<a id="cart" href="/cart">  Carrito  </a></td>
+
+<h1>Gorras</h1>
+<td><a href="http://127.0.0.1:8000/products/create/gorra"><button>Nueva Gorra</button></a></td>
+<table>
+    <thead>
+        <tr>
+            <th>Color 1</th>
+            <th>Color 2</th>
+            <th>Color logo</th>
+            <th>Marca</th>
+            <th>Añadido el día</th>
+            <th>URL foto</th>
+            <th>Precio unitario</th>
+            <th>Stock actual</th>
+            <th>Descripción</th>
+            <th></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        
+        {% for gorra in gorras %}
+        <tr>
+            <td>{{ gorra.color1 }}</td>
+            <td>{{ gorra.color2 }}</td>
+            <td>{{ gorra.color_logo }}</td>
+            <td>{{ gorra.marca }}</td>
+            <td>{{ gorra.creation_date }}</td>
+            <td><img src="{{ gorra.photo.url }}" alt="image" width="200" height="200" class="image-class" id="image-id"></td>
+            <td>{{ gorra.unit_price }}€</td>
+            <td>{{ gorra.current_stock }}</td>
+            <td>{{ gorra.description }}</td>
+            <td><a href="http://127.0.0.1:8000/products/update/gorra/{{ gorra.id }}"><button>Update product</button></a></td>
+            <td><a href="http://127.0.0.1:8000/products/delete/gorra/{{ gorra.id }}"><button>Delete product</button></a></td>
+            <td><a href="http://127.0.0.1:8000/products/add_to_cart/{{ gorra.id }}"><button>Añadir al carrito</button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h1>Camisetas</h1>
+<td><a href="http://127.0.0.1:8000/products/create/camiseta"><button>Nueva camiseta</button></a></td>
+<table>
+    <thead>
+        <tr>
+            <th>Color 1</th>
+            <th>Color 2</th>
+            <th>Talla</th>
+            <th>Marca</th>
+            <th>Tejido</th>
+            <th>Tallaje</th>
+            <th>Mangas</th>
+            <th>Añadido el día</th>
+            <th>URL foto</th>
+            <th>Precio unitario</th>
+            <th>Stock actual</th>
+            <th>Descripción</th>
+            <th></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        
+        {% for camiseta in camisetas %}
+        <tr>
+            <td>{{ camiseta.color1 }}</td>
+            <td>{{ camiseta.color2 }}</td>
+            <td>{{ camiseta.talla }}</td>
+            <td>{{ camiseta.marca }}</td>
+            <td>{{ camiseta.tejido }}</td>
+            <td>{{ camiseta.tallaje }}</td>
+            <td>{{ camiseta.mangas }}</td>
+            <td>{{ camiseta.creation_date }}</td>
+            <td><img src="{{ camiseta.photo.url }}" alt="image" width="200" height="200" class="image-class" id="image-id"></td>
+            <td>{{ camiseta.unit_price }}€</td>
+            <td>{{ camiseta.current_stock }}</td>
+            <td>{{ camiseta.description }}</td>
+            <td><a href="http://127.0.0.1:8000/products/update/camiseta/{{ camiseta.id }}"><button>Update product</button></a></td>
+            <td><a href="http://127.0.0.1:8000/products/delete/camiseta/{{ camiseta.id }}"><button>Delete product</button></a></td>
+            <td><a href="http://127.0.0.1:8000/products/add_to_cart/{{ camiseta.id }}"><button>Añadir al carrito</button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

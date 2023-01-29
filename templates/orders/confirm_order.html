@@ -1,0 +1,15 @@
+<h1>CONFIRMACIÓN DE PEDIDO</h1>
+
+{% block content %}
+
+<p>¿Seguro que quiere comprar"?</p>
+
+<form action="http://127.0.0.1:8000/cart/buy" method="POST">
+    {% csrf_token %}
+
+<input type="submit" value="Comprar" name="Confirmar">
+</form>
+
+<a href="{% url 'cart' %}"><button>Cancelar</button></a>
+
+{% endblock %}

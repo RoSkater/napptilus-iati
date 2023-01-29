@@ -1,0 +1,32 @@
+<td><a id="product_list" href="/products">  Lista productos  </a>|<a id="cart" href="/cart">  Carrito  </a></td>
+
+<h1>CARRITO {{ cart.date_ordered }}</h1>
+{% if cart.get_cart_items %}
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Photo</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            {% for item in cart.get_cart_items %}
+            <tr>
+                <td>{{ item.product.description }} {{ item.product.marca }}</td>
+                <td>{{ item.product.unit_price }}€</td>
+                <td>{{ item.quantity }}</td>
+                <td><img src="{{ item.product.photo.url }}" alt="image" width="200" height="200" class="image-class" id="image-id"></td>
+            </tr>
+            {% endfor %}
+      
+
+        <td>TOTAL: {{ cart.get_cart_total }}<td>
+    </tbody>
+</table>
+<td><a href="http://127.0.0.1:8000/cart/buy"><button>Confirmar pedido</button></a></td>
+{% else %}
+<h2>El carrito está vacío</h2>
+{% endif %}
