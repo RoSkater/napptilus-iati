@@ -1,15 +1,28 @@
 <h1>CONFIRMACIÓN DE PEDIDO</h1>
 
-{% block content %}
-
-<p>¿Seguro que quiere comprar"?</p>
-
 <form action="http://127.0.0.1:8000/cart/buy" method="POST">
     {% csrf_token %}
-
-<input type="submit" value="Comprar" name="Confirmar">
+    <h2>Intoduzca sus datos</h2>
+    <table>
+        <tr>
+            <td>Nombre: <input type="text" name="name" required></td>
+        </tr>
+        <tr>
+            <td>Apellidos: <input type="text" name="surname" required></td>
+        </tr>
+        <tr>
+            <td>Dirección (calle, número, código postal, ciudad): <input type="text" name="address" required></td>
+        </tr>
+        <tr>
+            <td>Email: <input type="text" name="email" required></td>
+        </tr>
+        <tr>
+            <td>Teléfono: <input type="text" name="phone" required></td>
+        </tr>
+    </table>
+    
+    <input type="submit" value="Comprar" name="Comprar">
 </form>
 
 <a href="{% url 'cart' %}"><button>Cancelar</button></a>
 
-{% endblock %}

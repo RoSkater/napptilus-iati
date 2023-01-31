@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.core.mail import send_mail
 
 from .models import OrderProduct, Cart
 
@@ -38,8 +39,29 @@ def buyCart(request):
     if request.method == "POST":
         cart = Cart.objects.get()
         order = OrderProduct.objects.all()
+
+        name = request.POST.get("name")
+        surname = request.POST.get("surname")
+        address = request.POST.get("address")
+        email = [request.POST.get("email")]
+        phone = request.POST.get("phone")
+
+        send_email(name, surname, address, email, phone, cart)
+
         cart.delete()
         order.delete()
         return redirect('/cart')
 
     return render(request, 'orders/confirm_order.html')
+
+def send_email(name, surname, address, email, phone, cart):
+    subject = 'Pedido para ' + name + ' ' + surname
+
+    message = 'Enviado a ' + address + '\n' + 'Teléfono de contacto introducido: ' + phone + '\n' + 'Su pedido:\n'
+    items = cart.get_cart_items()
+    for item in items:
+        prod = item.product
+        message = message + prod.description + ' ' + prod.marca + ' ' + str(prod.unit_price) + '€ x' + str(item.quantity) + '\n'
+    message = message + 'Precio final: ' + str(cart.get_cart_total()) + '€'
+
+    send_mail(subject, message, 'shop@djangomail.com', email)

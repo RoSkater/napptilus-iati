@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView
 
-from carton.cart import Cart
-
 from .models import Product, Gorra, Camiseta
 from .forms import gorraForm, camisetaForm, gorraUpdateForm, camisetaUpdateForm
 
