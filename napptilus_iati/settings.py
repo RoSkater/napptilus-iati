@@ -137,4 +137,4 @@ EMAIL_HOST_USER = 'shop@djangomail.com'
 
 FIXTURE_DIRS = [os.path.join(BASE_DIR, 'apps/products/fixtures')]
 
-CRONJOBS = [('* * * * *', 'apps.products.cron.update_stock', '>> cron.log')]
+CRONJOBS = [('0 * * * *', 'apps.products.cron.update_stock')]

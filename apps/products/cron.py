@@ -1,38 +1,30 @@
 import os
-from django.core.management import call_command
 from pathlib import Path
 from ..cart.models import OrderProduct
 from .models import Product
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 def update_stock():
     orders = list(OrderProduct.objects.values())
     productos = list(Product.objects.values())
 
-    print(orders)
-
-    fich = os.path.join(BASE_DIR, 'log.txt')
+    fich = os.path.join(BASE_DIR, 'cron.log')
 
     for producto in productos:
 
         p_id = producto['id']
         p_cs = producto['current_stock']
         p_is = producto['initial_stock']
-        print(f'PRODUCTO {p_id} Current Stock: {p_cs} Initial Stock: {p_is}')
         quantity = 0
 
         for order in orders:
             o_id = order['product_id']
             o_quant = order['quantity']
-            print(f'ORDER {o_id} Cantidad: {o_quant}')
             if o_id == p_id:
-                print('EQUALS')
                 quantity += o_quant
-                print(f'QUANTITY = {quantity}')
         total = p_cs + quantity
-        print(f'TOTAL = {total}')
 
         if total == p_is:
             
@@ -43,6 +35,10 @@ def update_stock():
                 file.write('Stock readjusment needed for item: ' + str(p_id) + "\n")
             
             p_cs = p_is - quantity
+                
+            with open(fich, 'a') as file:
+                file.write('Stock fixed for item: ' + str(p_id) + "\n")
+            
 
             prod = Product.objects.get(id=p_id)
             prod.current_stock = p_cs
