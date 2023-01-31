@@ -1,4 +1,27 @@
 = Napptilus/IATI Web
+== Description
+
+Welcome to the Caps & T-Shirts Web Application!
+
+Here you can create, update, delete and buy products available in the platform.
+
+You will also receive a *Console Email* with all the details of your order.
 
 == Running the Application
+
+First of all it is needed to install all the dependencies, so:
+
+* Create a virtual environment:
+[source] 
+python -m venv venv
+
+* Install the dependencies with:
+[source] 
+pip intall -r requirements.txt
+
+* Execute:
+[source] 
+python manage.py runserver
+
+* Go to your browser to the _[server_ip]/products_
 

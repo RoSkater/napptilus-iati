@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView
 
-from .models import Product, Gorra, Camiseta
+from .models import Gorra, Camiseta
 from .forms import gorraForm, camisetaForm, gorraUpdateForm, camisetaUpdateForm
 
 ### Productos: Listado y CRUD ###
