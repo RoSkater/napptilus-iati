@@ -9,7 +9,7 @@ class gorraForm(ModelForm):
 class gorraUpdateForm(ModelForm):
     class Meta:
         model = Gorra
-        fields = ('color1', 'color2', 'color_logo', 'marca', 'photo', 'unit_price', 'current_stock', 'description')
+        fields = ('color1', 'color2', 'color_logo', 'marca', 'unit_price', 'current_stock', 'description')
 
 
 class camisetaForm(ModelForm):
@@ -20,5 +20,5 @@ class camisetaForm(ModelForm):
 class camisetaUpdateForm(ModelForm):
     class Meta:
         model = Camiseta
-        fields = ('color1', 'color2', 'talla', 'marca', 'tejido', 'tallaje', 'mangas', 'photo', 'unit_price', 'current_stock', 'description')
+        fields = ('color1', 'color2', 'talla', 'marca', 'tejido', 'tallaje', 'mangas', 'unit_price', 'current_stock', 'description')
 

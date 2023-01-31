@@ -38,7 +38,6 @@ def displayCart(request):
 def buyCart(request):
     if request.method == "POST":
         cart = Cart.objects.get()
-        order = OrderProduct.objects.all()
 
         name = request.POST.get("name")
         surname = request.POST.get("surname")
@@ -49,7 +48,6 @@ def buyCart(request):
         send_email(name, surname, address, email, phone, cart)
 
         cart.delete()
-        order.delete()
         return redirect('/cart')
 
     return render(request, 'orders/confirm_order.html')

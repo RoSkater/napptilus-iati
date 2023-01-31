@@ -39,6 +39,8 @@ def updateGorra(request, pk):
         form = gorraUpdateForm(request.POST, instance=gorra)
         if form.is_valid():
             form.save()
+            gorra.photo = request.FILES['photo']
+            gorra.save()
             return redirect("/products")
     context = {'form': form}
     return render(request, 'products/update_gorra.html', context)
@@ -78,6 +80,8 @@ def updateCamiseta(request, pk):
         form = camisetaUpdateForm(request.POST, instance=camiseta)
         if form.is_valid():
             form.save()
+            camiseta.photo = request.FILES['photo']
+            camiseta.save()
             return redirect("/products")
     context = {'form': form}
     return render(request, 'products/update_camiseta.html', context)

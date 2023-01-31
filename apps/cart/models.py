@@ -9,7 +9,7 @@ class OrderProduct(models.Model):
     quantity = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.product.name
+        return str(self.product.id)
 
 class Cart(models.Model):
     products = models.ManyToManyField(OrderProduct)

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fixture_magic',
-    'django_crontab',
+    'django_cron',
     'apps.products',
     'apps.cart',
 ]
@@ -137,4 +137,4 @@ EMAIL_HOST_USER = 'shop@djangomail.com'
 
 FIXTURE_DIRS = [os.path.join(BASE_DIR, 'apps/products/fixtures')]
 
-CRONJOBS = [('0 * * * *', 'apps.products.cron.print_success', '>> website.log')]
+CRON_CLASSES = ['apps.products.cron.UpdateStock']

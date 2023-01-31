@@ -6,7 +6,8 @@
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p}}
-<input type="submit" value="Update" name="Update">
+    <td>Foto: <input type="file" name="photo"></td>
+    <input type="submit" value="Update" name="Update">
 </form>
 
 

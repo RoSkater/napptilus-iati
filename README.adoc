@@ -15,6 +15,11 @@ First of all it is needed to install all the dependencies, so:
 [source] 
 python -m venv venv
 
+* Activate the virtual environment:
+[source] 
+source venv/bin/activate
+
+
 * Install the dependencies with:
 [source] 
 pip intall -r requirements.txt
