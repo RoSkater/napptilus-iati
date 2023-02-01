@@ -67,7 +67,7 @@
           "color2":"rojo",
           "marca":"DC",
           "photo":"images/gorra_dc.jpg",
-          "unit_price":"63.00",
+          "unit_price":"65.00",
           "initial_stock":10,
           "current_stock":10,
           "description":"Gorra estilo urbano",
@@ -153,7 +153,7 @@
        "model":"products.gorra",
        "pk":1,
        "fields":{
-          "color_logo":"blacno/negro"
+          "color_logo":"blanco/negro"
        }
     },
     {

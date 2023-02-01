@@ -8,7 +8,7 @@
 <form action="http://127.0.0.1:8000/products/delete/gorra/{{ item.id }}" method="POST">
     {% csrf_token %}
 
-<input type="submit" value="Eliminar" name="Confirmar">
+<input type="submit" style=" background-color: red; color: white; border: 2px solid black" value="Eliminar" name="Confirmar">
 </form>
 
 <a href="{% url 'products' %}"><button>Cancelar</button></a>
