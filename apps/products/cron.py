@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from pathlib import Path
 from ..cart.models import OrderProduct
 from .models import Product
@@ -11,6 +12,11 @@ def update_stock():
     productos = list(Product.objects.values())
 
     fich = os.path.join(BASE_DIR, 'cron.log')
+
+    dt_string = now.strftime("%d/%m/%Y - %H:%M:%S")
+
+    with open(fich, 'a') as file:
+                file.write('Logs from: ' + dt_string + "\n")
 
     for producto in productos:
 
