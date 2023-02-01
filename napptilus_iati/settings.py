@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fixture_magic',
     'django_crontab',
     'apps.products',
     'apps.cart',
@@ -134,7 +133,5 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST_USER = 'shop@djangomail.com'
-
-FIXTURE_DIRS = [os.path.join(BASE_DIR, 'apps/products/fixtures')]
 
 CRONJOBS = [('0 * * * *', 'apps.products.cron.update_stock')]

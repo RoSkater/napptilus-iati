@@ -9,24 +9,16 @@ You will also receive a *Console Email* with all the details of your order.
 
 == Running the Application
 
-First of all it is needed to install all the dependencies, so:
+* Make sure you have Docker installed in your OS
 
-* Create a virtual environment:
+* Build the Docker Container with the following command:
 [source] 
-python -m venv venv
+docker build -t napptilus_iati .
 
-* Activate the virtual environment:
-[source] 
-source venv/bin/activate
+* Run the Docker container in port 8000:
+[source]
+docker run -p 8000:8000 napptilus_iati
 
+* Application will be available as: *_localhost:8000_*
 
-* Install the dependencies with:
-[source] 
-pip intall -r requirements.txt
-
-* Execute:
-[source] 
-python manage.py runserver
-
-* Go to your browser to the _[server_ip]/products_
 
