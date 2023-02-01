@@ -1,3 +1,4 @@
+{% include 'base.html' %}
 <h1>GORRA CREATE</h1>
 
 {% block content %}
@@ -6,7 +7,6 @@
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p}}
-    <td>Foto: <input type="file" name="photo"></td>
     <input type="submit" value="Create" name="Create">
 </form>
 

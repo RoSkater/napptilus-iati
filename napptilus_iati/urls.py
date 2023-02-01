@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from apps.products.views import product_list, createGorra, updateGorra, deleteGorra, \
+from apps.products.views import renderInit, product_list, createGorra, updateGorra, deleteGorra, \
 createCamiseta, updateCamiseta, deleteCamiseta
 from apps.cart.views import addToCart, displayCart, buyCart
 
 urlpatterns = [
+    path('', renderInit, name="init"),
     path('admin/', admin.site.urls),
     path('products/', product_list, name="products"),
     path('products/create/gorra', createGorra, name='create_gorra'),

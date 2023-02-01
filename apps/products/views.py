@@ -4,6 +4,12 @@ from django.views.generic import CreateView, UpdateView
 from .models import Gorra, Camiseta
 from .forms import gorraForm, camisetaForm, gorraUpdateForm, camisetaUpdateForm
 
+
+### INICIO
+
+def renderInit(request):
+    return render(request, 'base.html')
+
 ### Productos: Listado y CRUD ###
 
 def product_list(request):
@@ -20,7 +26,7 @@ def createGorra(request):
     form = gorraForm(instance=gorra)
 
     if request.method == "POST":
-        form = gorraForm(request.POST, instance=gorra)
+        form = gorraForm(request.POST, request.FILES, instance=gorra)
 
         if form.is_valid():
             form.save()
@@ -36,7 +42,7 @@ def updateGorra(request, pk):
     gorra = Gorra.objects.get(id=pk)
     form = gorraUpdateForm(instance=gorra)
     if request.method == "POST":
-        form = gorraUpdateForm(request.POST, instance=gorra)
+        form = gorraUpdateForm(request.POST, request.FILES, instance=gorra)
         if form.is_valid():
             form.save()
             return redirect("/products")
@@ -59,7 +65,7 @@ def createCamiseta(request):
     form = camisetaForm(instance=camiseta)
 
     if request.method == "POST":
-        form = camisetaForm(request.POST, instance=camiseta)
+        form = camisetaForm(request.POST, request.FILES, instance=camiseta)
         
         if form.is_valid():
             form.save()
@@ -75,7 +81,7 @@ def updateCamiseta(request, pk):
     camiseta = Camiseta.objects.get(id=pk)
     form = camisetaUpdateForm(instance=camiseta)
     if request.method == "POST":
-        form = camisetaUpdateForm(request.POST, instance=camiseta)
+        form = camisetaUpdateForm(request.POST, request.FILES, instance=camiseta)
         if form.is_valid():
             form.save()
             return redirect("/products")

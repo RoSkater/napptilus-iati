@@ -1,3 +1,4 @@
+{% include 'base.html' %}
 <h1>CONFIRMACIÓN DE PEDIDO</h1>
 
 <form action="http://127.0.0.1:8000/cart/buy" method="POST">
@@ -19,7 +20,7 @@
         <tr>
             <td>Teléfono: <input type="text" name="phone" required></td>
         </tr>
-    </table>
+        {% include 'base.html' %}</table>
     
     <input type="submit" value="Comprar" name="Comprar">
 </form>
