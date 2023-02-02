@@ -116,7 +116,7 @@ def createCamiseta(request):
         else:
             data = json.loads(request.body)
             camiseta = Camiseta(**data)
-            gorra.save()
+            camiseta.save()
             return JsonResponse({'message': 'Item created'})
 
             

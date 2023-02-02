@@ -13,10 +13,14 @@ You will also receive a *Console Email* with all the details of your order.
 * Make sure you have Docker installed in your OS
 
 * Build the Docker Container with the following command:
+
+IMPORTANT: If you are using Linux include *_sudo_* before this command
 [source] 
 docker build -t napptilus_iati .
 
 * Run the Docker container in port 8000:
+
+IMPORTANT: If you are using Linux include *_sudo_* before this command
 [source]
 docker run -p 8000:8000 napptilus_iati
 
@@ -44,7 +48,10 @@ GET request to endpoint: http://localhost:8000/products
 
 * Camiseta: DELETE request to endpoint: http://localhost:8000/products/delete/camiseta/#{product_id}#
 
+NOTE: Check media/gifs to see some gifs using the API
+
 == 5. Other Back-end Features
 * Everytime the Docker container is run, the database is restored to the initial conditions (no orders, just initial default stock) before the web server is started
 
 * There is a crontab job that checks and updates (if necessary) the current stock of every product
+
