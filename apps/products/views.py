@@ -37,12 +37,18 @@ def createGorra(request):
     form = gorraForm(instance=gorra)
 
     if request.method == "POST":
-        form = gorraForm(request.POST, instance=gorra)
-        if form.is_valid():
-            form.save()
-            gorra.current_stock = gorra.initial_stock
-            gorra.save()
-            return redirect("/products")
+        form = gorraForm(request.POST, request.FILES, instance=gorra)
+
+        if 'Mozilla' in request.META.get('HTTP_USER_AGENT', '') or \
+       'Chrome' in request.META.get('HTTP_USER_AGENT', '') or \
+       'Safari' in request.META.get('HTTP_USER_AGENT', ''): 
+
+            if form.is_valid():
+                form.save()
+                gorra.current_stock = gorra.initial_stock
+                gorra.save()
+                return redirect("/products")
+                
         else:
             data = json.loads(request.body)
             gorra = Gorra(**data)
@@ -57,7 +63,7 @@ def updateGorra(request, pk):
     gorra = Gorra.objects.get(id=pk)
     form = gorraUpdateForm(instance=gorra)
     if request.method == "POST":
-        form = gorraUpdateForm(request.POST, instance=gorra)
+        form = gorraUpdateForm(request.POST, request.FILES, instance=gorra)
         if form.is_valid():
             form.save()
             return redirect("/products")
@@ -96,13 +102,16 @@ def createCamiseta(request):
     form = camisetaForm(instance=camiseta)
 
     if request.method == "POST":
-        form = camisetaForm(request.POST, instance=camiseta)
-        
-        if form.is_valid():
-            form.save()
-            camiseta.current_stock = camiseta.initial_stock
-            camiseta.save()
-            return redirect("/products")
+        form = camisetaForm(request.POST, request.FILES, instance=camiseta)
+        if 'Mozilla' in request.META.get('HTTP_USER_AGENT', '') or \
+       'Chrome' in request.META.get('HTTP_USER_AGENT', '') or \
+       'Safari' in request.META.get('HTTP_USER_AGENT', ''): 
+
+            if form.is_valid():
+                form.save()
+                camiseta.current_stock = camiseta.initial_stock
+                camiseta.save()
+                return redirect("/products")
         
         else:
             data = json.loads(request.body)
@@ -119,7 +128,7 @@ def updateCamiseta(request, pk):
     camiseta = Camiseta.objects.get(id=pk)
     form = camisetaUpdateForm(instance=camiseta)
     if request.method == "POST":
-        form = camisetaUpdateForm(request.POST, instance=camiseta)
+        form = camisetaUpdateForm(request.POST, request.FILES, instance=camiseta)
         if form.is_valid():
             form.save()
             return redirect("/products")

@@ -6,6 +6,7 @@
 <table>
     <thead>
         <tr>
+            <th>ID de Producto</th>
             <th>Color 1</th>
             <th>Color 2</th>
             <th>Color logo</th>
@@ -25,6 +26,7 @@
         
         {% for gorra in gorras %}
         <tr>
+            <td>{{ gorra.id }}</td>
             <td>{{ gorra.color1 }}</td>
             <td>{{ gorra.color2 }}</td>
             <td>{{ gorra.color_logo }}</td>
@@ -47,6 +49,7 @@
 <table>
     <thead>
         <tr>
+            <th>ID de Producto</th>
             <th>Color 1</th>
             <th>Color 2</th>
             <th>Talla</th>
@@ -69,6 +72,7 @@
         
         {% for camiseta in camisetas %}
         <tr>
+            <td>{{ camiseta.id }}</td>
             <td>{{ camiseta.color1 }}</td>
             <td>{{ camiseta.color2 }}</td>
             <td>{{ camiseta.talla }}</td>
