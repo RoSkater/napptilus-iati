@@ -10,10 +10,12 @@ RUN pip install -r requirements.txt
 
 COPY . /napptilus_iati
 
+RUN apt-get update && apt-get install cron -y && apt install systemctl
+
 RUN python3 manage.py migrate
 
 RUN python3 manage.py loaddata apps/products/fixtures/initial_data.json
 
 RUN python3 manage.py crontab add
 
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["bash", "init.sh"]

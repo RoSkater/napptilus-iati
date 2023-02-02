@@ -12,7 +12,7 @@ def update_stock():
     productos = list(Product.objects.values())
 
     fich = os.path.join(BASE_DIR, 'cron.log')
-
+    now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y - %H:%M:%S")
 
     with open(fich, 'a') as file:
