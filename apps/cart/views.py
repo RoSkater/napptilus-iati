@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 
 from .models import OrderProduct, Cart
 
-from ..products.models import Product, Gorra, Camiseta
+from ..products.models import Product
 
 # Create your views here.
 

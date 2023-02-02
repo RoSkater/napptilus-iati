@@ -10,4 +10,10 @@ RUN pip install -r requirements.txt
 
 COPY . /napptilus_iati
 
-CMD ["bash", "init.sh"]
+RUN python3 manage.py migrate
+
+RUN python3 manage.py loaddata apps/products/fixtures/initial_data.json
+
+RUN python3 manage.py crontab add
+
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]

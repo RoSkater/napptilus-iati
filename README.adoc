@@ -23,3 +23,28 @@ docker run -p 8000:8000 napptilus_iati
 * Application will be available as: *_localhost:8000_*
 
 
+== API Documentation
+
+=== 1. Product List Ordered by Creation Date, First Caps, Then T-Shirts
+GET request to endpoint: http://localhost:8000/products
+
+=== 2. Create Product
+* Gorra: POST request to endpoint: http://localhost:8000/products/create/gorra
+
+* Camiseta: POST request to endpoint: http://localhost:8000/products/create/camiseta
+
+=== 3. Update Product
+* Gorra: PUT request to endpoint: http://localhost:8000/products/update/gorra/#{product_id}#
+
+* Camiseta: PUT request to endpoint: http://localhost:8000/products/update/camiseta/#{product_id}#
+
+
+=== 4. Delete Product (Logical)
+* Gorra: DELETE request to endpoint: http://localhost:8000/products/delete/gorra/#{product_id}#
+
+* Camiseta: DELETE request to endpoint: http://localhost:8000/products/delete/camiseta/#{product_id}#
+
+== 5. Other Back-end Features
+* Everytime the Docker container is run, the database is restored to the initial conditions (no orders, just initial default stock) before the web server is started
+
+* There is a crontab job that checks and updates (if necessary) the current stock of every product
